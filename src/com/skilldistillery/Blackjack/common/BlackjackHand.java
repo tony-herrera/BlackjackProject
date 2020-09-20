@@ -10,33 +10,31 @@ public class BlackjackHand extends Hand {
 
 	@Override
 	public void addCard(Card card) {
+		// at beginning of the game both the dealer and player are given 2 cards. One
+		// face down and one face up. Player sees
+		// dealers one up card and chooses to hit or stay. If player hits, another card
+		// is added.
+
 		super.addCard(card);
 	}
 
 	@Override
-	public void clear() {
-		super.clear();
-	}
-
-
 	public int getHandValue() {
-		return 0;
+		// this will get the sum of the values within each players hand to include rank.
+		int cardValue = 0;
+		for (Card card : cards) {
+			cardValue += card.getValue();
+			
+		}
 
-	}
-
-	public boolean isBlackjack() {
-		return false;
+		return cardValue;
 
 	}
 
 	public boolean isBust() {
+		// a player receives bust if they go over 21
 		return false;
 
 	}
 
-	@Override
-	public String toString() {
-		return super.toString();
-	}
-	
 }

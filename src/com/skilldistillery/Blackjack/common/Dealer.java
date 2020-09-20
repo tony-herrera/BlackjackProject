@@ -1,59 +1,70 @@
 package com.skilldistillery.Blackjack.common;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import com.skilldistillery.common.cards.Card;
 import com.skilldistillery.common.cards.Deck;
 import com.skilldistillery.common.cards.Rank;
 import com.skilldistillery.common.cards.Suit;
 
-public class Dealer extends BlackjackTable {
+public class Dealer extends Player {
+	Deck deck = new Deck();
+	protected int handvalue = 0;
 
-	public String startDeal() {
-
-		Rank[] ranks = Rank.values();
-		for (int i = 0; i < ranks.length; i++) {
-			System.out.println(ranks[i] + " " + ranks[i].getValue());
-		}
-
-		for (Suit s : Suit.values()) {
-			System.out.println(s);
-		}
-
-		Deck deck = new Deck();
+	
+	
+	
+	public void dealerShuffle() {
 		deck.shuffle();
+	}
 
-		Scanner sc = new Scanner(System.in);
-		boolean userInput;
+	/*
+	 * Determines if the dealer wants to hit according to classic Blackjack rules.
+	 */
+	public boolean wantsToHit() {
+		if (handvalue < 17) {
+			return true;
+		}
+		return false;
+	}
 
-//	System.out.println("How many cards?");
-		do {
-			System.out.println("Hit?");
-			try {
-				String num = sc.next();
-				num = num.toUpperCase();
-				if (num.equals("N")) {
-					System.out.println("OK");
-				} else if (num.equals("Y")) {
-					int value = 0;
-					for (int i = 0; i < 1; i++) {
-						Card c = deck.dealCard();
-						value += c.getValue();
-						System.out.println(c);
-						System.out.println("your value is " + value);
-						System.out.println("Hit?");
-					}
-				} else {
+	/*
+	 * Returns true if the dealer has blackjack.
+	 */
+	public boolean hasBlackJack() {
+		if (handvalue == 21) {
+			System.out.println("The dealer has blackjack!");
+			return true;
+		}
+		return false;
+	}
 
-					throw new IllegalArgumentException("Input must be a number");
+	/*
+	 * Prints the dealer's hand.
+	 */
+	public void showHand() {
+		System.out.println(handvalue);
+	}
 
-				}
-			} catch (Exception e) {
-				IllegalArgumentException iae = new IllegalArgumentException();
-				System.out.println(iae);
-			}
-			sc.close();
-		} 
-		while ( userInput = "N" != null);
-		return null;
+	/*
+	 * Returns the value of the dealer's hand.
+	 */
+	public int getHandValue() {
+		return handvalue;
+	}
+
+	/*
+	 * Determines if a dealer has busted.
+	 */
+	public boolean busted(int handvalue) {
+		if (handvalue > 21) {
+			System.out.println("The dealer busted!");
+			return true;
+		}
+		return false;
+	}
+	
+	public Card deal () {
+		return deck.dealCard();
 	}
 }
