@@ -6,19 +6,19 @@ public class BlackjackTable {
 
 	Dealer theDealer = new Dealer();
 	Player player = new Player();
-	
-	
-	
+
 	public void welcome() {
-		System.out.println(" _____\n" + 
-				"         |A .  | _____\n" + 
-				"         | /.\\ ||A ^  | _____\n" + 
-				"         |(_._)|| / \\ ||A _  | _____\n" + 
-				"         |  |  || \\ / || ( ) ||A_ _ |\n" + 
-				"         |____V||  .  ||(_'_)||( v )|\n" + 
-				"                |____V||  |  || \\ / |\n" + 
-				"                       |____V||  .  |\n" + 
-				"                              |____V|" + "");
+		System.out.println("\n" + " __    __        _                                 _          \n"
+				+ "/ / /\\ \\ \\  ___ | |  ___   ___   _ __ ___    ___  | |_   ___  \n"
+				+ "\\ \\/  \\/ / / _ \\| | / __| / _ \\ | '_ ` _ \\  / _ \\ | __| / _ \\ \n"
+				+ " \\  /\\  / |  __/| || (__ | (_) || | | | | ||  __/ | |_ | (_) |\n"
+				+ "  \\/  \\/   \\___||_| \\___| \\___/ |_| |_| |_| \\___|  \\__| \\___/ \n"
+				+ "   ___  _               _       _               _             \n"
+				+ "  / __\\| |  __ _   ___ | | __  (_)  __ _   ___ | | __         \n"
+				+ " /__\\//| | / _` | / __|| |/ /  | | / _` | / __|| |/ /         \n"
+				+ "/ \\/  \\| || (_| || (__ |   <   | || (_| || (__ |   <          \n"
+				+ "\\_____/|_| \\__,_| \\___||_|\\_\\ _/ | \\__,_| \\___||_|\\_\\         \n"
+				+ "                             |__/                             \n");
 	}
 
 	public void dealsCards() {
@@ -32,10 +32,10 @@ public class BlackjackTable {
 	}
 
 	public void displayCards() {
+		System.out.println("*******************************************************");
 		System.out.println(player.getBlackjackHand().toString());
-	
 		System.out.println("Here is the dealer's hand" + " : " + theDealer.getBlackjackHand().getCards().get(0));
-		
+		System.out.println("-------------------------------------------------------");
 		checkBJ();
 	}
 
@@ -60,8 +60,7 @@ public class BlackjackTable {
 		} else if (theDealer.playerTotal() == 21) {
 			System.out.println("Dealer wins!");
 			System.exit(theDealer.playerTotal());
-			
-			
+
 		} else if (player.playerTotal() == 21) {
 			System.out.println("Player 1 wins!");
 			System.exit(player.playerTotal());
@@ -76,6 +75,7 @@ public class BlackjackTable {
 		boolean keepGoing = true;
 		while (keepGoing) {
 			System.out.println("Keep going? yes or no ");
+			System.out.println("________________________");
 			String yes = sc.nextLine().toLowerCase();
 			switch (yes) {
 
@@ -90,6 +90,7 @@ public class BlackjackTable {
 			case "n":
 				while (keepGoing) {
 					System.out.println("Here is the dealer's hand" + theDealer.getBlackjackHand().getCards());
+					System.out.println("---------------------------------------------------------------------");
 					int value = theDealer.playerTotal();
 					keepGoing = theDealer.busted(value);
 					keepGoing = theDealer.hasBlackJack(value);
@@ -116,13 +117,17 @@ public class BlackjackTable {
 
 		} else if (theDealer.playerTotal() > 21
 				|| theDealer.playerTotal() < player.playerTotal() && player.playerTotal() <= 21) {
-			System.out.println("Player wins");
+			System.out.println("Player wins!!");
+			System.out.println("\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\n" + 
+					"");
 
 		} else if (player.playerTotal() < theDealer.playerTotal() || player.playerTotal() > 21) {
 			System.out.println("Dealer wins");
 
 		} else if (player.playerTotal() > theDealer.playerTotal() && player.playerTotal() < 22) {
-			System.out.println("The player wins!");
+			System.out.println("The player wins!!");
+			System.out.println("\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\n" + 
+					"");
 		}
 
 	}
