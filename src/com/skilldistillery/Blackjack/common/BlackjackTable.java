@@ -6,6 +6,20 @@ public class BlackjackTable {
 
 	Dealer theDealer = new Dealer();
 	Player player = new Player();
+	
+	
+	
+	public void welcome() {
+		System.out.println(" _____\n" + 
+				"         |A .  | _____\n" + 
+				"         | /.\\ ||A ^  | _____\n" + 
+				"         |(_._)|| / \\ ||A _  | _____\n" + 
+				"         |  |  || \\ / || ( ) ||A_ _ |\n" + 
+				"         |____V||  .  ||(_'_)||( v )|\n" + 
+				"                |____V||  |  || \\ / |\n" + 
+				"                       |____V||  .  |\n" + 
+				"                              |____V|" + "");
+	}
 
 	public void dealsCards() {
 		theDealer.dealerShuffle();
@@ -20,7 +34,7 @@ public class BlackjackTable {
 	public void displayCards() {
 		System.out.println(player.getBlackjackHand().toString());
 	
-		System.out.println("Here is the dealer's hand" + " " + theDealer.getBlackjackHand().getCards().get(0));
+		System.out.println("Here is the dealer's hand" + " : " + theDealer.getBlackjackHand().getCards().get(0));
 		
 		checkBJ();
 	}

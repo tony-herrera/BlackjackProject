@@ -6,8 +6,7 @@ public class BlackjackApp {
 
 	public static void main(String[] args) {
 		BlackjackTable table = new BlackjackTable();
-		System.out.println("Welcome to Blackjack: ");
-
+		table.welcome();
 		table.dealsCards();
 		table.displayCards();
 		table.checkBJ();
