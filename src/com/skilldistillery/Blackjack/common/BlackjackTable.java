@@ -20,7 +20,7 @@ public class BlackjackTable {
 	public void displayCards() {
 		System.out.println(player.getBlackjackHand().toString());
 	
-		System.out.println("Here is the dealer's hand" + theDealer.getBlackjackHand().getCards().get(0));
+		System.out.println("Here is the dealer's hand" + " " + theDealer.getBlackjackHand().getCards().get(0));
 		
 		checkBJ();
 	}
