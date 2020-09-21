@@ -11,9 +11,6 @@ public class Dealer extends Player {
 	Deck deck = new Deck();
 	protected int handvalue = 0;
 
-	
-	
-	
 	public void dealerShuffle() {
 		deck.shuffle();
 	}
@@ -21,22 +18,26 @@ public class Dealer extends Player {
 	/*
 	 * Determines if the dealer wants to hit according to classic Blackjack rules.
 	 */
-	public boolean wantsToHit() {
+	public boolean wantsToHit(int handvalue) {
 		if (handvalue < 17) {
+//			blackjackHand.addCard(deal());
+
 			return true;
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	/*
 	 * Returns true if the dealer has blackjack.
 	 */
-	public boolean hasBlackJack() {
+	public boolean hasBlackJack(int handvalue) {
 		if (handvalue == 21) {
 			System.out.println("The dealer has blackjack!");
-			return true;
+			return false;
 		}
-		return false;
+
+		return true;
 	}
 
 	/*
@@ -59,12 +60,12 @@ public class Dealer extends Player {
 	public boolean busted(int handvalue) {
 		if (handvalue > 21) {
 			System.out.println("The dealer busted!");
-			return true;
+			return false;
 		}
-		return false;
+		return true;
 	}
-	
-	public Card deal () {
+
+	public Card deal() {
 		return deck.dealCard();
 	}
 }

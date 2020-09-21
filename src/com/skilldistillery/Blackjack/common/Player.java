@@ -15,6 +15,7 @@ public class Player {
 	}
 
 	public BlackjackHand getBlackjackHand() {
+
 		return blackjackHand;
 	}
 
@@ -23,8 +24,6 @@ public class Player {
 	}
 
 	public int playerTotal() {
-		
-		
 
 		return blackjackHand.getHandValue();
 
@@ -38,10 +37,11 @@ public class Player {
 
 	}
 
-	public void takeHit() {
+	public void takeHit(Card card) {
 		// checks to see if value = blackjack
+		blackjackHand.addCard(card);
 		blackjackHand.getCards();
-		blackjackHand.getHandValue();
+		System.out.println(blackjackHand.getHandValue());
 
 	}
 
